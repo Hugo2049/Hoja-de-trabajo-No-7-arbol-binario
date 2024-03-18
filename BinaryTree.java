@@ -1,89 +1,56 @@
-import java.util.*;
+// Clase para representar un nodo en un árbol binario
+class TreeNode<E> {
+    E data;
+    TreeNode<E> left;
+    TreeNode<E> right;
 
-class BinaryTree<E extends Comparable<E>> {
-    private static class Node<E> {
-        E data;
-        Node<E> left;
-        Node<E> right;
-
-        public Node(E data) {
-            this.data = data;
-            left = null;
-            right = null;
-        }
+    public TreeNode(E data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
     }
+}
 
-    private Node<E> root;
+// Clase para representar un árbol binario de búsqueda
+class BinaryTree {
+    private TreeNode<Association> root;
 
     public BinaryTree() {
         root = null;
     }
 
-    public void insert(E data) {
+    public void insert(Association data) {
         root = insertRec(root, data);
     }
 
-    private Node<E> insertRec(Node<E> root, E data) {
+    private TreeNode<Association> insertRec(TreeNode<Association> root, Association data) {
         if (root == null) {
-            root = new Node<>(data);
+            root = new TreeNode<>(data);
             return root;
         }
 
-        if (data.compareTo(root.data) < 0) {
+        if (data.getKey().compareTo(root.data.getKey()) < 0) {
             root.left = insertRec(root.left, data);
-        } else if (data.compareTo(root.data) > 0) {
+        } else if (data.getKey().compareTo(root.data.getKey()) > 0) {
             root.right = insertRec(root.right, data);
         }
 
         return root;
     }
 
-    public void inOrderTraversal() {
-        inOrderTraversalRec(root);
+    public String search(String data) {
+        return searchRec(root, data);
     }
 
-    private void inOrderTraversalRec(Node<E> root) {
-        if (root != null) {
-            inOrderTraversalRec(root.left);
-            System.out.print(root.data + " ");
-            inOrderTraversalRec(root.right);
+    private String searchRec(TreeNode<Association> root, String data) {
+        if (root == null || root.data.getKey().equals(data)) {
+            return (root != null) ? root.data.getValue() : null;
         }
-    }
-}
 
-class Dictionary {
-    private BinaryTree<String> tree;
-
-    public Dictionary() {
-        tree = new BinaryTree<>();
-    }
-
-    public void buildDictionary(List<String> associations) {
-        for (String association : associations) {
-            String[] parts = association.split(",");
-            String word = parts[0].trim().toLowerCase();
-            String translation = parts[1].trim().toLowerCase();
-            tree.insert("(" + word + ", " + translation + ")");
+        if (data.compareTo(root.data.getKey()) < 0) {
+            return searchRec(root.left, data);
+        } else {
+            return searchRec(root.right, data);
         }
-    }
-
-    public String translate(String text) {
-        StringBuilder result = new StringBuilder();
-        String[] words = text.split(" ");
-        for (String word : words) {
-            String cleanedWord = word.replaceAll("[^a-zA-Z]", "").toLowerCase();
-            String translation = findTranslation(cleanedWord);
-            if (translation.isEmpty()) {
-                result.append("*").append(word).append("* ");
-            } else {
-                result.append(translation).append(" ");
-            }
-        }
-        return result.toString();
-    }
-
-    private String findTranslation(String word) {
-        // TODO: de búsqueda en el árbol binario hacer después :)
-        return "";
     }
 }

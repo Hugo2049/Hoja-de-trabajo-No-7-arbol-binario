@@ -1,0 +1,4 @@
+apple, manzana
+banana, plátano
+orange, naranja
+grape, uva

@@ -17,3 +17,5 @@ Salida Esperada: El programa solicitará una oración en inglés que se desea tr
 Nota:
 Asegúrate de que el archivo de asociaciones diccionario.txt en la carpeta al correr el código 
 por el momento no encontré bugs, y las pruebas unitarias corrieron bien
+Hay que ingresar el .txt si es que desea cambiarlo y si no pues ahí está el que le dejé, 
+lo que hace es correr el main y ingresar una oración en ingles, el codigo rrecorre el arbol y luego busca las palabras que están y las traduce con la relación y la busqueda 

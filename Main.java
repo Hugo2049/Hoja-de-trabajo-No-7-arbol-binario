@@ -3,7 +3,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Locale;
 
+/**
+ * Clase principal que realiza la traducción de oraciones de inglés a español utilizando un árbol binario.
+ */
 public class Main {
+    /**
+     * Método principal que construye el árbol de búsqueda a partir de un archivo de asociaciones,
+     * traduce una oración en inglés y la imprime en español.
+     * @param args Argumentos de la línea de comandos (no utilizados en este caso).
+     */
     public static void main(String[] args) {
         // Construir el árbol binario de búsqueda a partir del archivo de asociaciones
         BinaryTree dictionaryTree = buildDictionaryTree("diccionario.txt");
@@ -18,6 +26,11 @@ public class Main {
         System.out.println("Spanish Translation: " + spanishSentence);
     }
 
+    /**
+     * Método para construir un árbol binario de búsqueda a partir de un archivo de asociaciones.
+     * @param filename Nombre del archivo que contiene las asociaciones.
+     * @return El árbol binario de búsqueda construido.
+     */
     private static BinaryTree buildDictionaryTree(String filename) {
         BinaryTree dictionaryTree = new BinaryTree();
 
@@ -40,6 +53,12 @@ public class Main {
         return dictionaryTree;
     }
 
+    /**
+     * Método para traducir una oración de inglés a español utilizando el árbol binario de búsqueda.
+     * @param dictionaryTree El árbol binario de búsqueda que contiene las asociaciones de palabras.
+     * @param englishSentence La oración en inglés que se va a traducir.
+     * @return La oración traducida en español.
+     */
     private static String translateSentence(BinaryTree dictionaryTree, String englishSentence) {
         StringBuilder translatedSentence = new StringBuilder();
 

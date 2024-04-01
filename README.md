@@ -19,3 +19,5 @@ Asegúrate de que el archivo de asociaciones diccionario.txt en la carpeta al co
 por el momento no encontré bugs, y las pruebas unitarias corrieron bien
 Hay que ingresar el .txt si es que desea cambiarlo y si no pues ahí está el que le dejé, 
 lo que hace es correr el main y ingresar una oración en ingles, el codigo rrecorre el arbol y luego busca las palabras que están y las traduce con la relación y la busqueda 
+
+//NOTA: Fijate que se me olvido hacerlo en maven, y como hoy lo estabamos viendo las revisiones con Michael, entonces no se cómo estaría ahí pero aquí está mi github con maven https://github.com/Hugo2049/Hoja-de-trabajo-7-maven.git es literalmente lo mismo pero en maven
